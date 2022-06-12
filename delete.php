@@ -1,21 +1,39 @@
 <?php
-include 'connect.php';
-      
 
+ include'connect.php';
+
+ if(isset($_GET['deleteid'])){
+    $id=$_GET['deleteid'];
+
+    $sql= "delete from 'project' where id=$id";
+    $result= mysqli_query($con, $sql);
+     if($result){
+        header("location:display.php");
+     }else{
+        die(mysqli_error($con));
+     }
+
+
+ }
+
+
+
+      
+   
 
 if(isset($_POST ['submit'])){
-  $first_name=$_POST['first_name'];
-  $second_name=$_POST['second_name'];
-  $email=$_POST['email'];
-  $client_company=$_POST['client_company'];
-  $project_name=$_POST['project_name'];
-  $start_date=$_POST['start_date'];
-  $deadline=$_POST['deadline'];
-  $translator=$_POST['translator'];
-  $editor=$_POST['editor']; 
+  $First_name=$_POST['First name'];
+  $Second_name=$_POST['Second name'];
+  $Email=$_POST['Email'];
+  $Client_company=$_POST['Client company'];
+  $Project_name=$_POST['Project name'];
+  $Start_date=$_POST['Start date'];
+  $Deadline=$_POST['Deadline'];
+  $Translator=$_POST['Translator'];
+  $Editor=$_POST['Editor']; 
 
-   $sql= "insert into 'Project' (First name, Second name, Email, Client company, Project name,Start date, Deadline, Translator,Editor )
-   values('$first_name', '$second_name', '$email','$client_company','$project_name','$start_date','$deadline','$translator','$editor')";
+   $sql= "delete from 'Project' (First name, Second name, Email, Client company, Project name,Start date, Deadline, Translator,Editor )
+   values('$First_name', '$Second_name', '$Email','$Client_company','$Project_name','$Start_date','$Deadline','$Translator','$Editor')";
     $result= mysqli_query($con,$sql);
 
     if($result){
@@ -54,55 +72,55 @@ if(isset($_POST ['submit'])){
    <!--form-->
   <div class="container my-5  height:200px;"  >
       
-      <form method="post" action="client.php" >
+      <form method="post" >
     <!--first name-->
     <div>
         <label for="First name">First name</label>
-        <input type="text" class="form-control" id="first_name" name="first_name" >
+        <input type="text" class="form-control" id="First name" >
     </div>
     <!--second name-->
      <div>
         <label for="Second name">Second name</label>
-        <input type="text" class="form-control" id="second_name" name="second_name">
+        <input type="text" class="form-control" id="Second name">
     </div>
     <!--email-->
   <div class="mb-3">
     <label for="Email" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" name="email">
+    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text"></div>
   </div>
     <!--client company-->
   <div class="mb-3">
     <label for="Company" class="form-label">Client company</label>
-    <input type="text" class="form-control" id="client_company" name="client_company">
-  </div>  
+    <input type="text" class="form-control" id="Company">
+  </div>
     <!--project name-->
   <div>
       <label for="Project name">Project name</label>
-      <input type="text" class="form-control" id="Project name" name="project_name" >
+      <input type="text" class="form-control" id="Project name">
   </div>
   <!--start date-->
   <div>
   <label for="Start date">Start date</label>
-  <input type="date" class="form-control" id="Start date" name="start_date">
+  <input type="date" class="form-control" id="Start date">
   </div>
   <!--deadline-->
   <div>
   <label for="Deadline">Deadline</label>
-  <input type="date" class="form-control" id="Deadline" name="deadline" >
+  <input type="date" class="form-control" id="Deadline">
   </div>
   <!--translator-->
   <div>
   <label for="Translator">Translator</label>
-  <input type="text" class="form-control" id="Translator" name="translator" >
+  <input type="text" class="form-control" id="Translator">
 </div>
   <!--Editor-->
   <div>
   <label for="Editor">Editor</label>
-  <input type="text" class="form-control" id="Editor" name="editor">
+  <input type="text" class="form-control" id="Editor">
 </div>  
-  <input type="submit" name="submit" value="submit" class="btn btn-primary">
-  <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+  
+  <button type="submit" class="btn btn-primary">delete</button>
 </form>
 
       

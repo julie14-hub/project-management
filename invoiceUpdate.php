@@ -1,9 +1,37 @@
-
 <?php
- include'connect.php';
 
- if(isset($_POST['submit'])){
-     $First_name=$_POST['First_name'];
+include 'connect.php';
+
+if(isset($_GET['updateid'])){
+$id=$_GET['updateid'];
+
+$sql= "update from 'finance'";
+$result= mysqli_query($con,$sql);
+
+if($result){
+    header('location:displayFinance.php');
+}else{
+    die(mysqli_error($con));
+}
+
+ 
+
+}
+
+
+
+
+
+
+
+?>
+<?php
+include 'connect.php';
+      
+   
+
+if(isset($_POST ['submit'])){
+  $First_name=$_POST['First_name'];
      $Second_name=$_POST['Second_name'];
      $Email=$_POST['Email'];
      $Invoice_number=$_POST['Invoice number'];
@@ -11,26 +39,18 @@
      $Invoice_deadline=$_POST['Invoice deadline'];
      $Client_company=$_POST['Client company'];
 
-     $sql= "insert into 'finance' (First_name,Second_name,Email,Invoice_number,Invoice_date,Invoice_deadline,Client_company)
-     values('$First_name','$Second_name', '$Email','$Invoice_number','$Invoice_date', '$Invoice_deadline', '$Client_company')";
-     $result=mysqli_query($con,$sql);
+   $sql= "update 'finance' set id='$id',Firstname='$first_name',Second name='$Second_name', Email='$Email',
+   Invoice number='$Invoice_number', Invoice_date='$Invoice_date ', Invoice_deadline='$Invoice_deadline',
+   Client_company='$Client_company; where id=$id";
 
-     if($result){
-         echo "data inserted successfully";
-
-     }else{
-         die(mysqli_error($con));
-     }
-
-
-
- }
-
-
-
+    if($result){
+      header('location:display.php');
+    }else
+    {
+      die(mysqli_error($con));
+    }
+}
 ?>
-
-
 
 <!doctype html>
 <html lang="en">
@@ -96,7 +116,7 @@
   </div>
   
   
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">update</button>
 </form>
     </div>
     

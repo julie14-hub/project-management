@@ -1,9 +1,30 @@
-
 <?php
- include'connect.php';
 
- if(isset($_POST['submit'])){
-     $First_name=$_POST['First_name'];
+include 'connect.php';
+
+if(isset($_GET['deleteid'])){
+    $id=$_GET['deleteid'];
+
+    $sql="delete from 'finance'";
+    $result= mysqli_query($con, $sql);
+
+    if($result){
+        header('location:displayFinance.php');
+    }else{
+        die(mysqli_error($con));
+    }
+}
+
+
+
+?>
+<?php
+include 'connect.php';
+      
+   
+
+if(isset($_POST ['submit'])){
+  $First_name=$_POST['First_name'];
      $Second_name=$_POST['Second_name'];
      $Email=$_POST['Email'];
      $Invoice_number=$_POST['Invoice number'];
@@ -11,25 +32,19 @@
      $Invoice_deadline=$_POST['Invoice deadline'];
      $Client_company=$_POST['Client company'];
 
-     $sql= "insert into 'finance' (First_name,Second_name,Email,Invoice_number,Invoice_date,Invoice_deadline,Client_company)
-     values('$First_name','$Second_name', '$Email','$Invoice_number','$Invoice_date', '$Invoice_deadline', '$Client_company')";
-     $result=mysqli_query($con,$sql);
+   $sql= "insert into 'Project' (First name, Second name, Email, Client company, Project name,Start date, Deadline, Translator,Editor )
+   values('$First_name', '$Second_name', '$Email','$Client_company','$Project_name','$Start_date','$Deadline','$Translator','$Editor')";
+    $result= mysqli_query($con,$sql);
 
-     if($result){
-         echo "data inserted successfully";
-
-     }else{
-         die(mysqli_error($con));
-     }
-
-
-
- }
-
-
+    if($result){
+      header('location:display.php');
+    }else
+    {
+      die(mysqli_error($con));
+    }
+}
 
 ?>
-
 
 
 <!doctype html>
@@ -96,7 +111,7 @@
   </div>
   
   
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">delete</button>
 </form>
     </div>
     
