@@ -1,5 +1,6 @@
 <?php
 include 'connect.php';
+include 'validate.php';
       
 
 
@@ -14,7 +15,7 @@ if(isset($_POST ['submit'])){
   $translator=$_POST['translator'];
   $editor=$_POST['editor']; 
 
-   $sql= "insert into 'Project' (First name, Second name, Email, Client company, Project name,Start date, Deadline, Translator,Editor )
+   $sql= "insert into project (first_name,second_name,email,client_company,project_name,start_date,deadline,translator,editor)
    values('$first_name', '$second_name', '$email','$client_company','$project_name','$start_date','$deadline','$translator','$editor')";
     $result= mysqli_query($con,$sql);
 
@@ -54,7 +55,7 @@ if(isset($_POST ['submit'])){
    <!--form-->
   <div class="container my-5  height:200px;"  >
       
-      <form method="post" action="client.php" >
+      <form method="post" action="client.php" autocomplete="off" >
     <!--first name-->
     <div>
         <label for="First name">First name</label>

@@ -35,6 +35,7 @@
       <th scope="col">Second name</th>
       <th scope="col">Email</th>
       <th scope="col">Invoice number</th>
+      <th scope="col">Invoice amount</th>
       <th scope="col">Invoice date</th>
       <th scope="col">Invoice deadline</th>
       <th scope="col">Client company</th>
@@ -50,25 +51,29 @@
        $result= mysqli_query($con,$sql);
        if($result){
          while($row=mysqli_fetch_assoc($result)){
-          $NO=$_POST['NO'];
-          $First_name=$_POST['First name'];
-          $Second_name=$_POST['Second name'];
-          $Email=$_POST['Email'];
-          $Invoice_number=$_POST['Invoice number'];
-          $Invoice_date=$_POST['invoice date'];
-          $Invoice_deadline=$_POST['Invoice deadline'];
-          $Client_company=$_POST['Client company'];
+          $id=$row['id'];
+          $first_name=$row['first_name'];
+          $second_name=$row['second_name'];
+          $email=$row['email'];
+          $invoice_number=$row['invoice_number'];
+          $invoice_amount=$row['invoice_amount'];
+          $invoice_date=$row['invoice_date'];
+          $invoice_deadline=$row['invoice_deadline'];
+          $client_company=$row['client_company'];
           
           
           echo'<tr>
           <th scope="row">'.$id.'</th>
-          <td>'.$First_name.'</td>
-          <td>'.$Second_name.'</td>
-          <td>'.$Email.'</td>
-          <td>'.$Invoice_number.'</td>
-          <td>'.$Invoice_date.'</td>
-          <td>'.$$Invoice_deadline.'</td>
-          <td>'.$Client_company.'</td>
+          <td>'.$first_name.'</td>
+          <td>'.$second_name.'</td>
+          <td>'.$email.'</td>
+          <td>'.$invoice_number.'</td>
+          <td>'.$invoice_amount.'</td>
+          <td>'.$invoice_date.'</td>
+          <td>'.$invoice_deadline.'</td>
+          <td>'.$client_company.'</td>
+          
+      
       
   
           <td>

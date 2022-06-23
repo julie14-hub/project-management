@@ -1,49 +1,50 @@
-<?php 
- include 'connect.php';
-
- if(isset($_GET['updateid'])){
-    $id=$_GET['updateid'];
-
-    $sql= "update from 'project' where id= $id";
-    $result=mysqli_query($con, $sql);
-    
-    if($result){
-        header("location:display.php");
-
-    }else{
-        die(mysqli_error($con));
-    }
- }
-
-?>
 <?php
 include 'connect.php';
-      
-   
 
-if(isset($_POST ['submit'])){
-  $First_name=$_POST['First name'];
-  $Second_name=$_POST['Second name'];
-  $Email=$_POST['Email'];
-  $Client_company=$_POST['Client company'];
-  $Project_name=$_POST['Project name'];
-  $Start_date=$_POST['Start date'];
-  $Deadline=$_POST['Deadline'];
-  $Translator=$_POST['Translator'];
-  $Editor=$_POST['Editor']; 
 
-   $sql= "insert into 'Project' (First name, Second name, Email, Client company, Project name,Start date, Deadline, Translator,Editor )
-   values('$First_name', '$Second_name', '$Email','$Client_company','$Project_name','$Start_date','$Deadline','$Translator','$Editor')";
-    $result= mysqli_query($con,$sql);
+$id=$_GET['updateid'];
+ $sql= "select for * 'project' where my id=$id";
+ $result= mysqli_query($con,$sql);
+ $row= mysqli_fetch_assoc($result);
+ $id=$row['id'];
+ $first_name=$row['first_name'];
+  $second_name=$row['second_name'];
+  $email=$row['email'];
+  $client_company=$row['client_company'];
+  $project_name=$row['project_name'];
+  $start_date=$row['start_date'];
+  $deadline=$row['deadline'];
+  $translator=$row['translator'];
+  $editor=$row['editor']; 
+
+
+
+ if(isset($_POST ['submit'])){
+  $first_name=$_POST['first_name'];
+  $second_name=$_POST['second_name'];
+  $email=$_POST['email'];
+  $client_company=$_POST['client_company'];
+  $project_name=$_POST['project_name'];
+  $start_date=$_POST['start_date'];
+  $deadline=$_POST['deadline'];
+  $translator=$_POST['translator'];
+  $editor=$_POST['editor']; 
+
+   $sql= "update 'finance' set id='$id',first_name='$first_name',second name='$second_name',
+    email='$email',  client_company='$client_company,project_name='$project_name',
+    start_date='$start_date ', deadline='$deadline', translator='$translator', editor='$editor'; 
+    where id=$id";
 
     if($result){
       header('location:display.php');
     }else
     {
       die(mysqli_error($con));
-    }
-}
 
+    }
+   
+
+  }
 ?>
 
 <!doctype html>
@@ -70,54 +71,63 @@ if(isset($_POST ['submit'])){
     <a class="nav-link" href="finance.php">FINANCE</a>
   </li>
    <!--form-->
-  <div class="container my-5  height:200px;"  >
+  <div class="container my-5 "  >
       
       <form method="post" >
     <!--first name-->
     <div>
         <label for="First name">First name</label>
-        <input type="text" class="form-control" id="First name" >
+        <input type="text" class="form-control" id="first_name"  name="first_name" 
+        value=<?php echo $first_name?>>
     </div>
     <!--second name-->
      <div>
-        <label for="Second name">Second name</label>
-        <input type="text" class="form-control" id="Second name">
+        <label for="second_name">Second name</label>
+        <input type="text" class="form-control" id="second_name" name="second_name" 
+        value=<?php echo $second_name?>>
     </div>
     <!--email-->
   <div class="mb-3">
     <label for="Email" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp">
+    <input type="email" class="form-control" id="email"  name="email"
+     value=<?php echo $email?> aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text"></div>
   </div>
     <!--client company-->
   <div class="mb-3">
     <label for="Company" class="form-label">Client company</label>
-    <input type="text" class="form-control" id="Company">
+    <input type="text" class="form-control" id="client_company" name="client_company" 
+    value=<?php echo $client_company?>>
   </div>
     <!--project name-->
   <div>
-      <label for="Project name">Project name</label>
-      <input type="text" class="form-control" id="Project name">
+      <label for="project_name">Project name</label>
+      <input type="text" class="form-control" id="project_name" name="project_name"
+       value=<?php echo $project_name?>>
   </div>
   <!--start date-->
   <div>
-  <label for="Start date">Start date</label>
-  <input type="date" class="form-control" id="Start date">
+  <label for="start_date">Start date</label>
+  <input type="date" class="form-control" id="start_date" name="start_date"
+   value=<?php echo $start_date?>>
   </div>
   <!--deadline-->
   <div>
   <label for="Deadline">Deadline</label>
-  <input type="date" class="form-control" id="Deadline">
+  <input type="date" class="form-control" id="deadline" name="deadline" 
+  value=<?php echo $deadline?>>
   </div>
   <!--translator-->
   <div>
   <label for="Translator">Translator</label>
-  <input type="text" class="form-control" id="Translator">
+  <input type="text" class="form-control" id="translator" name="translator" 
+  value=<?php echo $translator?>>
 </div>
   <!--Editor-->
   <div>
-  <label for="Editor">Editor</label>
-  <input type="text" class="form-control" id="Editor">
+  <label for="editor">Editor</label>
+  <input type="text" class="form-control" id="editor" name= "editor" 
+  value=<?php echo $editor?>>
 </div>  
   
   <button type="submit" class="btn btn-primary">update</button>

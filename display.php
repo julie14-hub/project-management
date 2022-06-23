@@ -1,6 +1,8 @@
 <?php
 
  include 'connect.php';
+ $query="select *from project";
+ $result=mysql_query($query);
 
 
 
@@ -39,39 +41,39 @@
       <th scope="col">Project name</th>
       <th scope="col">Start date</th>
       <th scope="col">Deadline</th>
-      <th scope="col">translator</th>
+      <th scope="col">Translator</th>
       <th scope="col">Editor</th>
       
     </tr>
   </thead>
   <tbody>
     <?php
-    $sql= "select from 'project'";
+    $sql= "select from project";
     $result= mysqli_query($con, $sql);
     if($result){
       while($row=mysqli_fetch_assoc($result)){
-        $id=$_POST['id'];
-        $First_name=$_POST['First name'];
-        $Second_name=$_POST['Second name'];
-        $Email=$_POST['Email'];
-        $Client_company=$_POST['Client company'];
-        $Project_name=$_POST['Project name'];
-        $Start_date=$_POST['Start date'];
-        $Deadline=$_POST['Deadline'];
-        $Translator=$_POST['Translator'];
-        $Editor=$_POST['Editor']; 
+        $id=$row['id'];
+        $first_name=$row['first_name'];
+        $second_name=$row['second_name'];
+        $email=$row['email'];
+        $client_company=$row['client_company'];
+        $project_name=$row['project_name'];
+        $start_date=$row['start_date'];
+        $deadline=$row['deadline'];
+        $translator=$row['translator'];
+        $editor=$row['editor']; 
         
         echo'<tr>
         <th scope="row">'.$id.'</th>
-        <td>'.$First_name.'</td>
-        <td>'.$Second_name.'</td>
-        <td>'.$Email.'</td>
-        <td>'.$Client_company.'</td>
-        <td>'.$Project_name.'</td>
-        <td>'.$Start_date.'</td>
-        <td>'.$Deadline.'</td>
-        <td>'.$Translator.'</td>
-        <td>'.$Editor.'</td>
+        <td>'.$first_name.'</td>
+        <td>'.$second_name.'</td>
+        <td>'.$email.'</td>
+        <td>'.$client_company.'</td>
+        <td>'.$project_name.'</td>
+        <td>'.$start_date.'</td>
+        <td>'.$deadline.'</td>
+        <td>'.$translator.'</td>
+        <td>'.$editor.'</td>
 
         <td>
       <button class="btn btn-primary" > <a href="update.php? updateid='.$id.'" class="text-light" > UPDATE  </a></button>
