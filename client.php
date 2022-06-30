@@ -1,8 +1,7 @@
 <?php
-include 'connect.php';
-include 'validate.php';
-      
+include ('connect.php');
 
+    
 
 if(isset($_POST ['submit'])){
   $first_name=$_POST['first_name'];

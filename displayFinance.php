@@ -2,6 +2,7 @@
 
   include 'connect.php';
 
+  
 
 
 ?>
@@ -47,7 +48,7 @@
   <tbody>
       <?php
        
-       $sql= "select from 'finance'";
+       $sql= "select *from finance";
        $result= mysqli_query($con,$sql);
        if($result){
          while($row=mysqli_fetch_assoc($result)){
@@ -77,8 +78,8 @@
       
   
           <td>
-          <button class="btn btn-primary" > <a href="update2.php? updateid='.$id.'" class="text-light" > UPDATE  </a></button>
-          <button class="btn btn-danger"> <a href="delete2.php? deleteid= '.$id.' "> DELETE</a></button>
+          <button class="btn btn-primary" > <a href="invoiceUpdate.php? updateid='.$id.'" class="text-light" > UPDATE  </a></button>
+          <button class="btn btn-danger"> <a href="invoiceDelete.php? deleteid= '.$id.' "> DELETE</a></button>
         </td>
           
   

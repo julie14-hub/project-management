@@ -1,7 +1,6 @@
-
 <?php
- include'connect.php';
- include 'validateTwo.php';
+ include ('connect.php');
+ 
 
  if(isset($_POST['submit'])){
      $first_name=$_POST['first_name'];
@@ -29,6 +28,13 @@
 
 
  }
+
+ if(isset($_GET['delete'])){
+  $id=$_GET['delete'];
+   $mysqli->query("DELETE FROM finance where id=$id  ") or die($mysqli->error());
+
+}
+
 
 
 

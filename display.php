@@ -1,8 +1,8 @@
 <?php
 
  include 'connect.php';
- $query="select *from project";
- $result=mysql_query($query);
+
+
 
 
 
@@ -48,7 +48,7 @@
   </thead>
   <tbody>
     <?php
-    $sql= "select from project";
+    $sql= "select *from project";
     $result= mysqli_query($con, $sql);
     if($result){
       while($row=mysqli_fetch_assoc($result)){
