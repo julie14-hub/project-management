@@ -6,21 +6,24 @@ include 'connect.php';
  
 
 
- if(isset($_POST ['submit'])){
-  $first_name=$_POST['first_name'];
-  $second_name=$_POST['second_name'];
-  $email=$_POST['email'];
-  $client_company=$_POST['client_company'];
-  $project_name=$_POST['project_name'];
-  $start_date=$_POST['start_date'];
-  $deadline=$_POST['deadline'];
-  $translator=$_POST['translator'];
-  $editor=$_POST['editor']; 
+ if(isset($_PUT ['update'])){
+  $id= $_PUT['id'];
+  $first_name=$_PUT['first_name'];
+  $second_name=$_PUT['second_name'];
+  $email=$_PUT['email'];
+  $client_company=$_PUT['client_company'];
+  $project_name=$_PUT['project_name'];
+  $start_date=$_PUT['start_date'];
+  $deadline=$_PUT['deadline'];
+  $translator=$_PUT['translator'];
+  $editor=$_PUT['editor']; 
 
-   $sql= "update 'finance' set id='$id',first_name='$first_name',second name='$second_name',
-    email='$email',  client_company='$client_company,project_name='$project_name',
+   $sql="update 'finance' set id='$id',first_name='$first_name',second name='$second_name',
+    email='$email',client_company='$client_company,project_name='$project_name',
     start_date='$start_date ', deadline='$deadline', translator='$translator', editor='$editor'; 
     where id=$id";
+
+    $result= mysqli_query($con, $sql);
 
     if($result){
       echo"updated sucessfully";
@@ -40,12 +43,13 @@ include 'connect.php';
      
 
     $sql= "SELECT *FROM 'project' WHERE 'updateid'= $id";
-    $result= $mysql->query($con, $sql);
+    $result= mysqli_query($con, $sql);
 
 
    if($result->num_row > 0){
     while($row=$result-> fetch_assoc()){
 
+      $id=$_row['id'];
       $first_name=$_row['first_name'];
       $second_name=$_row['second_name'];
       $email=$_row['email'];
@@ -157,7 +161,7 @@ include 'connect.php';
   >
 </div>  
       
-      <button type="submit"  class="btn btn-primary"  >update</button>
+<input class="btn btn-primary" type="submit" value="update" name="update">
 </form>
 
       

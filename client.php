@@ -1,6 +1,6 @@
 <?php
 include ('connect.php');
-
+ 
     
 
 if(isset($_POST ['submit'])){
@@ -41,6 +41,10 @@ if(isset($_POST ['submit'])){
 
     <title>PROJECT MANAGEMENT</title>
   </head>
+
+ <style>
+ <?php include "style.css" ?>
+ </style>
   <body>
     <!--navigation bar-->
     
@@ -51,6 +55,12 @@ if(isset($_POST ['submit'])){
   <li class="nav-item">
     <a class="nav-link" href="finance.php">FINANCE</a>
   </li>
+
+  <!--heading-->
+<div class="container" class>
+  <h2 >ENTER CLIENTS DETAILS:</h2>
+</div>
+
    <!--form-->
   <div class="container my-5  height:200px;"  >
       
@@ -100,10 +110,15 @@ if(isset($_POST ['submit'])){
   <div>
   <label for="Editor">Editor</label>
   <input type="text" class="form-control" id="Editor" name="editor">
-</div>  
+</div>   
+
+ 
+</form>
+<div> 
   <input type="submit" name="submit" value="submit" class="btn btn-primary">
   <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-</form>
+</div>
+
 
       
   </div>

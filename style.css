@@ -1,11 +1,35 @@
+li{
+    padding-left: 100px;
+    color: black;
+    
 
+}
 
 
 form{
-    height: 100px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+   
 
 }
 ul{
     color: black;
 
+}
+
+body{
+    background-color:grey;
+}
+h2{
+    padding-top: 70px;
+    text-align:center;
+
+}
+a{
+    color: black;
+}
+
+.container{
+    color: rgb(22, 19, 19);
 }

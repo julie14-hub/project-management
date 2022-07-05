@@ -1,20 +1,23 @@
 <?php
 include 'connect.php';
 
-if(isset($_POST ['update'])){
-  $first_name=$_POST['first_name'];
-  $second_name=$_POST['second_name'];
-  $email=$_POST['email'];
-  $invoice_number=$_POST['invoice_number'];
-  $invoice_amount=$_POST['invoice_amount'];
-  $invoice_date=$_POST['invoice_date'];
-  $invoice_deadline=$_POST['invoice_deadline'];
-  $client_company=$_POST['client_company'];
+  
+
+if(isset($_PUT ['update'])){
+  $id=$_PUT['id'];
+  $first_name=$_PUT['first_name'];
+  $second_name=$_PUT['second_name'];
+  $email=$_PUT['email'];
+  $invoice_number=$_PUT['invoice_number'];
+  $invoice_amount=$_PUT['invoice_amount'];
+  $invoice_date=$_PUT['invoice_date'];
+  $invoice_deadline=$_PUT['invoice_deadline'];
+  $client_company=$_PUT['client_company'];
 
   $sql= "update 'finance' set id='$id',first_name='$first_name',second_name='$second_name', email='$email',
   invoice_number='$invoice_number', invoice_amount='$invoice_amount', invoice_date='$invoice_date ', 
   invoice_deadline='$invoice_deadline',client_company='$client_company; where id=$id";
-  $result=$mysql->query($con, $sql);
+  $result=mysqli_query($con, $sql);
 
  if($result){
    header('location:display.php');
@@ -24,16 +27,16 @@ if(isset($_POST ['update'])){
  }
 }
 
-if(isset($_GET['id'])){
-  $id=$_GET['id'];
+if(isset($_GET['updateid'])){
+  $id=$_GET['updateid'];
    
 
-  $sql= "SELECT *FROM 'finance' WHERE 'id= $id";
-  $result= $mysql->query($con, $sql);
+  $sql= "SELECT *FROM 'finance' WHERE 'updateid'= $id";
+  $result= mysqli_query($con, $sql);
 
 
  if($result->num_row > 0){
-  while($row=$result-> fetch_assoc()){
+  while($row=$result-> fetch_assoc())
 
      $first_name=$row['first_name'];
      $second_name=$row['second_name'];
@@ -43,7 +46,9 @@ if(isset($_GET['id'])){
      $Invoice_date=$row['invoice_date'];
      $invoice_deadline=$row['invoice_deadline'];
      $client_company=$row['client_company'];
-  }}}
+
+ }}
+
 
 
 ?>
@@ -83,7 +88,7 @@ if(isset($_GET['id'])){
      <div>
         <label for="second_name">Second name</label>
         <input type="text" class="form-control" id="second_name" name="second_name" 
-         ?>>
+         ?>
     </div>
     <!--email-->
   <div class="mb-3">
