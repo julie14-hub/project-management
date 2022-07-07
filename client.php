@@ -14,7 +14,7 @@ if(isset($_POST ['submit'])){
   $translator=$_POST['translator'];
   $editor=$_POST['editor']; 
 
-   $sql= "insert into project (first_name,second_name,email,client_company,project_name,start_date,deadline,translator,editor)
+   $sql= "insert into 'project' (first_name,second_name,email,client_company,project_name,start_date,deadline,translator,editor)
    values('$first_name', '$second_name', '$email','$client_company','$project_name','$start_date','$deadline','$translator','$editor')";
     $result= mysqli_query($con,$sql);
 
@@ -111,13 +111,13 @@ if(isset($_POST ['submit'])){
   <label for="Editor">Editor</label>
   <input type="text" class="form-control" id="Editor" name="editor">
 </div>   
+<input type="submit" name="submit" value="submit" class="btn btn-primary">
 
  
 </form>
-<div> 
-  <input type="submit" name="submit" value="submit" class="btn btn-primary">
+
   <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-</div>
+
 
 
       

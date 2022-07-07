@@ -1,6 +1,6 @@
 <?php
  include ('connect.php');
- 
+
 
  if(isset($_POST['submit'])){
      $first_name=$_POST['first_name'];
@@ -12,11 +12,9 @@
      $invoice_deadline=$_POST['invoice_deadline'];
      $client_company=$_POST['client_company'];
 
-     $sql= "insert into finance (first_name,second_name,email,invoice_number, invoice_amount,
-      invoice_date,invoice_deadline,client_company)
-     values('$first_name','$second_name', '$email','$invoice_number',$invoice_amount,'$invoice_date',
-      '$invoice_deadline', '$client_company')";
-     $result=mysqli_query($con,$sql);
+     $sql= "insert into finance (first_name,second_name,email,invoice_number, invoice_amount,invoice_date,invoice_deadline,client_company)
+            values('$first_name','$second_name', '$email','$invoice_number',$invoice_amount,'$invoice_date','$invoice_deadline', '$client_company')";
+             $result=mysqli_query($con,$sql);
 
      if($result){
         header("location:displayFinance.php");
@@ -29,11 +27,8 @@
 
  }
 
- if(isset($_GET['delete'])){
-  $id=$_GET['delete'];
-   $mysqli->query("DELETE FROM finance where id=$id  ") or die($mysqli->error());
 
-}
+
 
 
 
